@@ -1,16 +1,108 @@
-# React + Vite
+# 🎬 OMDB Movie Search Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured **movie search web application** built using **ReactJS**, **React Router**, and **Tailwind CSS**, powered by the **OMDB API**.  
+Users can search movies, filter results, paginate through large datasets, and view detailed movie information.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🔍 Search movies by title or keyword
+- 🎞 Default movies loaded on first render (**Avengers**)
+- 🗂 Filter movies by type (Movie / Series / Episode) using **OMDB API parameters**
+- 📄 Pagination for large result sets
+- 📃 Detailed movie page with full information
+- ⚠️ Error handling and empty state handling
+- 🎨 Responsive UI using Tailwind CSS
+- 🧭 Client-side routing with React Router
+- ✨ Animated navbar search bar
+- 🔡 Text overflow handling with ellipsis (`...`)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **ReactJS**
+- **React Router DOM**
+- **JavaScript (ES6+)**
+- **HTML5 / CSS3**
+- **Tailwind CSS**
+- **OMDB API**
+
+---
+
+## 📁 Project Structure
+
+src/
+├── api/
+│ └── omdbService.js
+├── components/
+│ ├── Navbar.jsx
+│ ├── MovieCard.jsx
+│ ├── Pagination.jsx
+│ └── FilterDropdown.jsx
+├── pages/
+│ ├── Home.jsx
+│ └── MovieDetails.jsx
+├── App.jsx
+├── main.jsx
+└── index.css
+
+
+## 🔑 OMDB API Setup
+
+1. Create a free API key from:  
+   https://www.omdbapi.com/
+
+2. Create a `.env` file in the root directory:
+
+```env
+VITE_OMDB_API_KEY=your_api_key_here
+⚠️ Restart the dev server after adding .env
+
+⚙️ Installation & Running the App
+bash
+Copy code
+npm install
+npm run dev
+The app will run at:
+
+
+🔍 Search & Filtering Logic
+---
+
+Movie search uses the OMDB s parameter
+
+Filtering is done using the OMDB type parameter:
+
+movie
+
+series
+
+episode
+
+✅ No client-side array.filter() is used, as required.
+
+
+📄 Pagination
+---
+
+OMDB returns 10 results per page
+
+Pagination is calculated using totalResults
+
+Users can navigate between pages seamlessly
+
+
+🎨 UI & UX Enhancements
+Tailwind CSS for responsive design
+
+Animated expanding search bar in the navbar
+
+Text overflow handled using ellipsis (...)
+
+Loading states for better user experience
+
+
+🍿 Happy Coding!
+
