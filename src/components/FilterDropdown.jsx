@@ -3,7 +3,7 @@ const FilterDropdown = ({ value, onChange }) => {
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="p-2 border rounded mb-6"
+      className=" border-gray-500 bg-gray-800 text-white focus:outline-gray-500 focus:border-violet-700 transition-colors px-4 py-3 mb-6 rounded-xl"
     >
       <option value="">All</option>
       <option value="movie">Movie</option>

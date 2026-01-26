@@ -6,10 +6,8 @@ import Pagination from "../components/Pagination";
 import FilterDropdown from "../components/FilterDropdown.jsx";
 
 const Home = () => {
-  // -----------------------------
   // State variables
-  // -----------------------------
-  const [query, setQuery] = useState("");   
+  const [query, setQuery] = useState("Avengers"); 
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
@@ -17,9 +15,7 @@ const Home = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // -----------------------------
   // Fetch movies from OMDB API
-  // -----------------------------
   const fetchMovies = async () => {
     if (!query.trim()) {
       setError("Please enter a movie name");
@@ -47,20 +43,16 @@ const Home = () => {
     }
   };
 
-  // -----------------------------
+  
   // Re-fetch when page or filter changes
-  // -----------------------------
   useEffect(() => {
     if (query) {
       fetchMovies();
     }
   }, [page, type]);
 
-  // -----------------------------
-  // JSX
-  // -----------------------------
   return (
-    <div className="p-6 max-w-6xl mx-auto">
+    <div className="p-6 mx-auto">
       {/* Search bar */}
       <SearchBar
         value={query}
@@ -85,12 +77,12 @@ const Home = () => {
 
       {/* Loading state */}
       {loading && (
-        <p className="text-center text-gray-500">Loading movies...</p>
+        <p className="text-center text-gray-500 text-5xl my-5 mb-10">Loading movies...</p>
       )}
 
       {/* Movies grid */}
       {!loading && movies.length > 0 && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {movies.map((movie) => (
             <MovieCard key={movie.imdbID} movie={movie} />
           ))}

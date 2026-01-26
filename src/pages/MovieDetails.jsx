@@ -3,21 +3,13 @@ import { useParams, Link } from "react-router-dom";
 import { getMovieDetails } from "../api/omdb";
 
 const MovieDetails = () => {
-  // -----------------------------
   // Get movie ID from URL
-  // -----------------------------
   const { id } = useParams();
 
-  // -----------------------------
-  // State variables
-  // -----------------------------
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // -----------------------------
-  // Fetch movie details from OMDB
-  // -----------------------------
   const fetchMovieDetails = async () => {
     setLoading(true);
     setError("");
@@ -37,27 +29,21 @@ const MovieDetails = () => {
     }
   };
 
-  // -----------------------------
-  // Fetch data on component mount
-  // -----------------------------
+  
   useEffect(() => {
     fetchMovieDetails();
   }, [id]);
 
-  // -----------------------------
-  // Loading state
-  // -----------------------------
+  
   if (loading) {
     return (
-      <div className="p-6 text-center text-gray-500">
+      <div className="p-6 text-center text-2xl text-gray-500">
         Loading movie details...
       </div>
     );
   }
 
-  // -----------------------------
-  // Error state
-  // -----------------------------
+
   if (error) {
     return (
       <div className="p-6 text-center">
@@ -69,24 +55,20 @@ const MovieDetails = () => {
     );
   }
 
-  // -----------------------------
-  // Safety check
-  // -----------------------------
+  
   if (!movie) return null;
 
-  // -----------------------------
-  // JSX
-  // -----------------------------
+
   return (
     <div className="p-6 max-w-5xl mx-auto">
-      <Link to="/" className="text-blue-600 underline mb-4 inline-block">
+      <Link to="/" className="text-gray-200 inline-block hover:text-blue-400 mb-5">
         ← Back to Search
       </Link>
 
       <div className="flex flex-col md:flex-row gap-6">
         {/* Poster */}
         <img
-          src={movie.Poster !== "N/A" ? movie.Poster : "/placeholder.png"}
+          src={movie.Poster !== "" ? movie.Poster : "/placeholder.png"}
           alt={movie.Title}
           className="w-64 rounded shadow"
         />
@@ -117,7 +99,7 @@ const MovieDetails = () => {
             <strong>IMDB Rating:</strong> ⭐ {movie.imdbRating}
           </p>
 
-          <p className="mt-4 text-gray-700">
+          <p className="mt-4">
             {movie.Plot}
           </p>
         </div>
